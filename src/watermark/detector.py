@@ -47,9 +47,7 @@ class JamoWatermarkDetector:
         self.step_t = 0 # Reset step counter for each new text
         extracted_payload = ""
         
-        # Decode the entire sequence once, then split into tokens
-        # Note: This might not perfectly match the tokenization during generation,
-        # but it's a common approach. For perfect reconstruction, process IDs one by one.
+        # Decode the entire sequence once, then split into tokens (re-tokenization; note_251107)
         token_ids = input_ids[0].tolist()
 
         for token_id in token_ids:
