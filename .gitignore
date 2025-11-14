@@ -31,3 +31,5 @@ myenv/
 
 # IDE / Editor specific
 .vscode/
+
+.DS_Store
