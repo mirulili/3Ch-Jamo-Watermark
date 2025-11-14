@@ -11,7 +11,7 @@ def main():
     model, tokenizer = load_model_and_tokenizer("skt/kogpt2-base-v2")
 
     # Watermark parameters
-    original_message = "This is TEAM LLM watermark test."
+    original_message = "ABC"
     mode = 'robustness'
     k_bits = 2
 

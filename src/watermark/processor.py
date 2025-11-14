@@ -8,7 +8,7 @@ class JamoWatermarkProcessor(LogitsProcessor):
     A watermark injector using the 3 channels of Korean Jamo (Choseong, Jungseong, Jongseong).
     Inherits from LogitsProcessor to intervene in the generate() pipeline in real-time.
     """
-    def __init__(self, tokenizer, original_message: str, mode: str = 'robustness', k_bits: int = 2, top_k: int = 50, debug: bool = False):
+    def __init__(self, tokenizer, original_message: str, mode: str = 'robustness', k_bits: int = 2, top_k: int = 20, debug: bool = False):
         self.tokenizer = tokenizer    # Tokenizer for decoding
         byte_data = original_message.encode('utf-8')
         self.payload = ''.join(format(byte, '08b') for byte in byte_data)    # Full bitstream

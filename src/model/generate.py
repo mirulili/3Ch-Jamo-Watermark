@@ -7,7 +7,7 @@ def generate_watermarked_text(
     tokenizer: PreTrainedTokenizer,
     processor: JamoWatermarkProcessor,
     prompt: str,
-    max_length: int = 300
+    max_length: int = 50
 ) -> tuple[str, torch.LongTensor]:
     """
     Generates watermarked text using the provided model, tokenizer, and processor.
