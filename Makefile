@@ -17,6 +17,11 @@ run:
 	@echo "Running the main application..."
 	$(PYTHON) -m src.main
 
+
+test_robustness:
+	@echo "Running robustness evaluation..."
+	$(PYTHON) -m src.evaluation.eval_robustness
+
 # Clean up temporary files
 clean:
 	@echo "Cleaning up temporary files..."

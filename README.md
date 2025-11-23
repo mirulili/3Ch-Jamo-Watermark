@@ -50,7 +50,10 @@ This is a **capstone project** to suggest a **Korean specific LLM watermarking s
     make run
     ```
     This executes `src/main.py`, which performs the **entire process** of inserting the watermark to generate text and then restoring the message from the generated text.
-
+3. **Test Robustness**:
+    ```bash
+    make test_robustness
+    ```
 
 
 ## Core Operating Principle
