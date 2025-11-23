@@ -1,4 +1,5 @@
 import torch
+import math
 from transformers import PreTrainedTokenizer
 from .jamo_utils import get_last_syllable_jamo
 from .hash_policy import HashPolicy
@@ -11,7 +12,7 @@ class JamoWatermarkDetector:
         self.tokenizer = tokenizer
         self.mode = mode
         self.k_bits = k_bits
-        self.step_t = 0
+        #self.step_t = 0
         # The detector must know the payload to check if the extracted bits match the target.
         byte_data = original_message.encode('utf-8')
         self.payload = ''.join(format(byte, '08b') for byte in byte_data)
@@ -40,21 +41,28 @@ class JamoWatermarkDetector:
         
         return extracted_bits
 
-    def extract_payload(self, input_ids: torch.LongTensor) -> str:
+    def extract_payload(self, input_ids: torch.LongTensor, target_payload: str) -> tuple[float, str]:
         """
         Extracts the full watermark payload from a sequence of token IDs.
         """
-        self.step_t = 0 # Reset step counter for each new text
         extracted_payload = ""
-        
+
+        self.step_t = 0 # Reset step counter for each new text
+        detected_cnt = 0
+        total_steps = 0
+
         # Decode the entire sequence once, then split into tokens (re-tokenization; note_251107)
         token_ids = input_ids[0].tolist()
 
         for token_id in token_ids:
+
+            if self.step_t * self.k_bits >= len(target_payload):
+                break
+
             # Skip special tokens like BOS/EOS
             if token_id in self.tokenizer.all_special_ids:
                 continue
-
+            
             # Use convert_ids_to_tokens to get the raw token string,
             # which prevents re-tokenization issues (e.g., ' 인' -> '인').
             # This ensures consistency with the generation process.
@@ -64,8 +72,6 @@ class JamoWatermarkDetector:
             # This is the core synchronization logic for the detector.
             if extracted_bits is not None: # If the token contains a Hangul syllable
                 # Get the target bits that should have been embedded at this step
-                if self.step_t * self.k_bits >= len(self.payload):
-                    break # Stop if we are beyond the payload length
                 target_bits = int(self.payload[self.step_t * self.k_bits : (self.step_t + 1) * self.k_bits], 2)
 
                 # Check if the extracted bits match the target bits
@@ -74,7 +80,29 @@ class JamoWatermarkDetector:
                     binary_representation = format(extracted_bits, f'0{self.k_bits}b')
                     extracted_payload += binary_representation
                     self.step_t += 1
-                # If it does not match, do nothing. The step_t remains the same,
-                # and we will check the next token against the same target_bits.
-
-        return extracted_payload
+                    detected_cnt += 1
+                else:
+                    # If it does not match, step_t remains the same,
+                    # and we will check the next token against the same target_bits.
+                    total_steps += 1
+                    pass
+        total_steps = len(target_payload) // self.k_bits
+        
+        if total_steps > 0:
+            accuracy = detected_cnt / total_steps
+            
+            # Z-Score Calculation
+            p0 = 1.0 / (2 ** self.k_bits)
+            n = total_steps
+            expected_matches = n * p0
+            std_dev = math.sqrt(n * p0 * (1 - p0))
+            
+            if std_dev > 0:
+                z_score = (detected_cnt - expected_matches) / std_dev
+            else:
+                z_score = 0.0
+        else:
+            accuracy = 0.0
+            z_score = 0.0
+        
+        return accuracy, extracted_payload, z_score

@@ -9,7 +9,7 @@ def generate_watermarked_text(
     prompt: str,
     payload: str,
     k_bits: int = 2,
-    max_length: int = 200
+    max_length: int = 300
 ) -> tuple[str, torch.LongTensor]:
     """
     Generates watermarked text using the provided model, tokenizer, and processor.
@@ -43,7 +43,7 @@ def generate_watermarked_text(
             # 3) Check synchronization
             # Check if the chosen token satifies the watermark condition
             if target_bits is not None:
-                is_match = processor.check_token_math(next_token.item(), target_bits, channel_idx)
+                is_match = processor.check_token_match(next_token.item(), target_bits, channel_idx)
 
                 if is_match:
                     step_t += 1  # Move to the next set of bits only if matched

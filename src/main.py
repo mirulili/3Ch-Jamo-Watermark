@@ -1,7 +1,6 @@
 from .watermark.processor import JamoWatermarkProcessor
 from .watermark.detector import JamoWatermarkDetector
 from .watermark.payload_mgr import PayloadManager
-from .evaluation.eval_robustness import test_deletion_attack
 from .model.load_model import load_model_and_tokenizer
 from .model.generate import generate_watermarked_text
 
@@ -58,8 +57,10 @@ def main():
     detector = JamoWatermarkDetector(tokenizer=tokenizer, original_message=original_message, mode=mode, k_bits=k_bits)
     
     # Extract the bit payload from the generated text
-    extracted_payload = detector.extract_payload(outputs)
+    accuracy, extracted_payload, z_score = detector.extract_payload(outputs, payload_bits)
     print(f"Extracted Payload (bits): '{extracted_payload}'")
+    print(f"Accuracy: {accuracy * 100:.1f}%")
+    print(f"Z-Score:  {z_score:.2f}")
 
     # Decode the extracted bits into a message using the payload manager
     recovered_message = payload_mgr.decode(extracted_payload)
@@ -67,10 +68,16 @@ def main():
     
     # --- 4. Verification ---
     print("\n--- 3. Verification ---")
-    if recovered_message and original_message in recovered_message:
-        print("[Success] Original message was successfully verified.")
+
+    if accuracy >= 0.95: 
+        print("[Verification Success] Watermark Confirmed.")
     else:
-        print("[Failure] Original message could not be verified.")
+        print("[Verification Fail] Watermark Not Found.")
+
+    if recovered_message and original_message in recovered_message:
+        print("[Recover Success] Original message was successfully verified.")
+    else:
+        print("[Recover Fail] Original message could not be verified.")
 
 
 if __name__ == "__main__":

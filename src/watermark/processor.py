@@ -36,7 +36,7 @@ class JamoWatermarkProcessor:
         
         return logits
     
-    def check_token_math(self, token_id: int, target_bits: int, channel_idx: int) -> bool:
+    def check_token_match(self, token_id: int, target_bits: int, channel_idx: int) -> bool:
 
         token_str = self.tokenizer.convert_ids_to_tokens(token_id)
         jamo_indices = get_last_syllable_jamo(token_str)
