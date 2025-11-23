@@ -22,15 +22,16 @@ def main():
     print("--- 1. Watermark Generation Phase ---")
     
     payload_mgr = PayloadManager()
+    payload_bits = payload_mgr.encode(original_message)
+
     print(f"Original Message: '{original_message}'")
 
     # Instantiate JamoWatermarkProcessor with the generated payload
     jamo_processor = JamoWatermarkProcessor(
         tokenizer=tokenizer,
-        original_message = original_message,
         mode=mode,
         k_bits=k_bits,
-        debug=True  # Enable debug logging
+        top_k=20
     )
 
     # Generate watermarked text
@@ -39,7 +40,9 @@ def main():
         model=model,
         tokenizer=tokenizer,
         processor=jamo_processor,
-        prompt=prompt
+        prompt=prompt,
+        payload=payload_bits,
+        k_bits=k_bits,
     )
 
     print("\n[Generated Watermarked Text]")
