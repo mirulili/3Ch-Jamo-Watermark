@@ -9,7 +9,7 @@ def generate_watermarked_text(
     prompt: str,
     payload: str,
     k_bits: int = 2,
-    max_length: int = 50
+    max_length: int = 200
 ) -> tuple[str, torch.LongTensor]:
     """
     Generates watermarked text using the provided model, tokenizer, and processor.

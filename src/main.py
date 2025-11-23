@@ -13,7 +13,7 @@ def main():
     model, tokenizer = load_model_and_tokenizer("skt/kogpt2-base-v2")
 
     # Watermark parameters
-    original_message = "ABC"
+    original_message = "Read Me If You Can"
     mode = 'robustness'
     k_bits = 2
 
@@ -50,7 +50,8 @@ def main():
     print("-" * 30)
 
 
-    # --- 3. Decoding (Watermark Extraction) --- (수정 예정)
+    # --- 3. Decoding (Watermark Extraction) --- 
+    # Informed detection (verification)
     print("\n--- 2. Watermark Detection Phase ---")
     
     # Instantiate detector
@@ -67,9 +68,9 @@ def main():
     # --- 4. Verification ---
     print("\n--- 3. Verification ---")
     if recovered_message and original_message in recovered_message:
-        print("[Success] Original message was successfully recovered.")
+        print("[Success] Original message was successfully verified.")
     else:
-        print("[Failure] Original message could not be recovered.")
+        print("[Failure] Original message could not be verified.")
 
 
 if __name__ == "__main__":
