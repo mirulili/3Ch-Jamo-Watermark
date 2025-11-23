@@ -6,6 +6,8 @@ from .model.load_model import load_model_and_tokenizer
 from .model.generate import generate_watermarked_text
 
 def main():
+
+
     # --- 1. Configuration ---
     # Load model and tokenizer
     model, tokenizer = load_model_and_tokenizer("skt/kogpt2-base-v2")
@@ -15,12 +17,11 @@ def main():
     mode = 'robustness'
     k_bits = 2
 
+
     # --- 2. Encoding (Watermark Generation) ---
     print("--- 1. Watermark Generation Phase ---")
     
-    # PayloadManager is now used for safe encoding/decoding, even without BCH
     payload_mgr = PayloadManager()
-    # The processor will handle the conversion of the message to bits internally
     print(f"Original Message: '{original_message}'")
 
     # Instantiate JamoWatermarkProcessor with the generated payload
@@ -32,9 +33,7 @@ def main():
         debug=True  # Enable debug logging
     )
 
-
-
-    # Generate watermarked text using the new wrapper function
+    # Generate watermarked text
     prompt = "인공지능은 인류의 삶을 어떻게 바꿀 것인가?"
     watermarked_text, outputs = generate_watermarked_text(
         model=model,
@@ -47,10 +46,11 @@ def main():
     print(watermarked_text)
     print("-" * 30)
 
-    # --- 3. Decoding (Watermark Extraction) ---
+
+    # --- 3. Decoding (Watermark Extraction) --- (수정 예정)
     print("\n--- 2. Watermark Detection Phase ---")
     
-    # Instantiate detector with the same settings
+    # Instantiate detector
     detector = JamoWatermarkDetector(tokenizer=tokenizer, original_message=original_message, mode=mode, k_bits=k_bits)
     
     # Extract the bit payload from the generated text
@@ -64,9 +64,9 @@ def main():
     # --- 4. Verification ---
     print("\n--- 3. Verification ---")
     if recovered_message and original_message in recovered_message:
-        print("✅ Success: Original message was successfully recovered.")
+        print("[Success] Original message was successfully recovered.")
     else:
-        print("❌ Failure: Original message could not be recovered.")
+        print("[Failure] Original message could not be recovered.")
 
 
 if __name__ == "__main__":

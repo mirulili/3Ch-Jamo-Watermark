@@ -18,7 +18,7 @@ def get_last_syllable_jamo(token_str: str) -> tuple[int, int, int] | None:
     """
     last_syllable = None
     
-    # 1. Iterate through the token string from the end to find the 'last syllable'.
+    # 1. Iterate through the token string from the end to find the 'last syllable'. (e.g., '요' in '안녕하세요')
     for char in reversed(token_str):
         char_code = ord(char)
         # Check if it's within the Hangul Syllable range '가'(AC00) ~ '힣'(D7A3)
@@ -50,18 +50,18 @@ def get_last_syllable_jamo(token_str: str) -> tuple[int, int, int] | None:
     return (choseong_index, jungseong_index, jongseong_index)
 
 # --- (Reference) Test Code ---
-if __name__ == "__main__":
-    token1 = "안녕하세요" # Last syllable: '요'
-    token2 = "워터마크"   # Last syllable: '크'
-    token3 = "BPE."      # No last syllable
-
-    # '요' = 'ㅇ' + 'ㅛ' + ''
-    # Indices: 11, 12, 0
-    print(f"'{token1}' -> {get_last_syllable_jamo(token1)}")
-    
-    # '크' = 'ㅋ' + 'ㅡ' + ''
-    # Indices: 15, 18, 0
-    print(f"'{token2}' -> {get_last_syllable_jamo(token2)}")
-
-    # No Hangul syllable -> default (0, 0, 0)
-    print(f"'{token3}' -> {get_last_syllable_jamo(token3)}")
+#if __name__ == "__main__":
+#    token1 = "안녕하세요" # Last syllable: '요'
+#    token2 = "워터마크"   # Last syllable: '크'
+#    token3 = "BPE."      # No last syllable
+#
+#    # '요' = 'ㅇ' + 'ㅛ' + ''
+#    # Indices: 11, 12, 0
+#    print(f"'{token1}' -> {get_last_syllable_jamo(token1)}")
+#    
+#    # '크' = 'ㅋ' + 'ㅡ' + ''
+#    # Indices: 15, 18, 0
+#    print(f"'{token2}' -> {get_last_syllable_jamo(token2)}")
+#
+#    # No Hangul syllable -> default (0, 0, 0)
+#    print(f"'{token3}' -> {get_last_syllable_jamo(token3)}")

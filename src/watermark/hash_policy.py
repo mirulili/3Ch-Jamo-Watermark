@@ -1,7 +1,7 @@
 class HashPolicy:
     """
     Defines the policy for calculating Jamo-based hashes.
-    This allows for easy swapping of different hashing strategies.
+    This can be swapper out for different hashing strategies.
     """
     def __init__(self, mode: str = 'robustness', k_bits: int = 2):
         """
@@ -18,7 +18,7 @@ class HashPolicy:
         """
         mod_val = 2**self.k_bits
         
-        choseong_hash = 0 if self.mode == 'quality' else x % mod_val
+        choseong_hash = 0 if self.mode == 'quality' else x % mod_val  # to give more weight to vowels and final consonants
         jungseong_hash = y % mod_val
         jongseong_hash = z % mod_val
 
