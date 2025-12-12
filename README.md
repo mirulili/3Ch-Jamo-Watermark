@@ -76,7 +76,8 @@ This is a **capstone project** to suggest a **Korean specific LLM watermarking s
 ### General Text
 <img width="450" alt="unwatermarked" src="https://github.com/user-attachments/assets/963f6e31-602b-4db3-a04f-79e3e3c26189" />
 
-<br>
+(Used [MarkLLM Toolkit](https://github.com/THU-BPM/MarkLLM) visualizer)
+
 <br>
 
-Full report can be found here --> [Report](https://github.com/mirulili/3Ch-Jamo-Watermark/blob/main/Report.pdf)
+Full report can be found [here](https://github.com/mirulili/3Ch-Jamo-Watermark/blob/main/Report.pdf).
