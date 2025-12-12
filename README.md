@@ -1,8 +1,8 @@
 # 3-Channel LLM Watermarking for Hangul Jamo Structure
 
-This is a **capstone project** to suggest a **Korean specific LLM watermarking strategy** at **Yonsei University (2025 Fall)**.
+This is a **capstone project** to suggest a **Korean specific LLM watermarking strategy** by @mirulili at **Yonsei University (2025 Fall)**.
 
-
+<br>
 
 ## Structure
 
@@ -27,16 +27,16 @@ This is a **capstone project** to suggest a **Korean specific LLM watermarking s
 │  │
 │  └─ evaluation/                       # Performance evaluation related modules
 │     ├─ __init__.py
-│     ├─ eval_quality.py                 # (Planned) Measure generation quality (PPL, etc.)
-│     └─ eval_robustness.py              # (Currently disabled) Robustness testing
+│     ├─ eval_quality.py                 # Measure generation quality (PPL, etc.)
+│     └─ eval_robustness.py              # Robustness testing
 │
-├─ .gitignore                          # Git tracking exclusion settings
-├─ Makefile                            # Automation for build and execution
-├─ README.md                           # Project description
-└─ requirements.txt                    # List of dependency libraries
+├─ .gitignore                          
+├─ Makefile                            
+├─ README.md                           
+└─ requirements.txt                    
 ```
 
-
+<br>
 
 
 ## Execution Instructions
@@ -55,12 +55,28 @@ This is a **capstone project** to suggest a **Korean specific LLM watermarking s
     make test_robustness
     ```
 
+<br>
 
 ## Core Operating Principle
 
 1.  **Jamo Channel Separation**: Decompose a Hangul syllable into **three channels** -- Choseong (initial consonant), Jungseong (medial vowel), and Jongseong (final consonant) -- and **independently assign** a watermark bit to each channel.
 2.  **Parallel Channel Selection & Target Bit Matching**: At each watermarking insertion step, **one channel among three is randomly selected**. Calculate a hash value from the Jamo indices of each token and check if this value matches the **target bit** for the current step.
 3.  **Conditional Step Synchronization**:
-      * **Insertion (Processor)**: After applying a bias to the logits (probabilities), the watermark is considered inserted and moves to the next bit (**`step_t` increments**) **only if the most likely candidate token** matches the target bit.
+      * **Insertion (Processor)**: After applying a bias to the logits (probabilities), the watermark is considered inserted and moves to the next bit (**`step_t` increments**) **only if the most likely candidate token** matches the target bit and is actually selected.
       * **Detection (Detector)**: Read the tokens of the generated text sequentially, and extract the watermark and move to the next bit (**`step_t` increments**) **only if the token's hash value** matches the **target bit** to be found.
       * This method allows the generator and detector to maintain **synchronization** by advancing the step according to the same rule, despite the uncertainty of sampling.
+
+<br>
+
+## Preview of Detection Results
+
+### Watermarked Text
+<img width="440" alt="watermarked" src="https://github.com/user-attachments/assets/ae806f60-a313-43ae-9075-6488491825be" />
+
+### General Text
+<img width="450" alt="unwatermarked" src="https://github.com/user-attachments/assets/963f6e31-602b-4db3-a04f-79e3e3c26189" />
+
+<br>
+<br>
+
+Full report can be found here --> [Report](https://github.com/mirulili/3Ch-Jamo-Watermark/blob/main/Report.pdf)
