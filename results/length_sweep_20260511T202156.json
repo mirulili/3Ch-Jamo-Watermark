@@ -1,0 +1,130 @@
+{
+  "config": {
+    "model_name": "skt/kogpt2-base-v2",
+    "mode": "robustness",
+    "k_bits": 2,
+    "top_k": 40,
+    "bias_value": 5.0,
+    "max_length": 400,
+    "seed": 42
+  },
+  "prompt": "인공지능은 인류의 삶을 어떻게 바꿀 것인가?",
+  "base_message": "ABCDEFGHIJKLMNOP",
+  "records": [
+    {
+      "length_chars": 1,
+      "message": "A",
+      "payload_bits": 8,
+      "total_steps": 4,
+      "detected_cnt": 323,
+      "cycles_completed": 80.75,
+      "z_score": 25.811,
+      "recovery_rate": 1.0,
+      "n_hangul_trials": 399,
+      "max_skip_run": 5,
+      "generated_tokens": 400,
+      "channel_trials": {
+        "0": 141,
+        "1": 124,
+        "2": 134
+      },
+      "channel_matches": {
+        "0": 108,
+        "1": 108,
+        "2": 107
+      }
+    },
+    {
+      "length_chars": 2,
+      "message": "AB",
+      "payload_bits": 16,
+      "total_steps": 8,
+      "detected_cnt": 157,
+      "cycles_completed": 19.625,
+      "z_score": 7.6632,
+      "recovery_rate": 1.0,
+      "n_hangul_trials": 372,
+      "max_skip_run": 93,
+      "generated_tokens": 400,
+      "channel_trials": {
+        "0": 60,
+        "1": 61,
+        "2": 251
+      },
+      "channel_matches": {
+        "0": 52,
+        "1": 53,
+        "2": 52
+      }
+    },
+    {
+      "length_chars": 4,
+      "message": "ABCD",
+      "payload_bits": 32,
+      "total_steps": 16,
+      "detected_cnt": 204,
+      "cycles_completed": 12.75,
+      "z_score": 12.1854,
+      "recovery_rate": 1.0,
+      "n_hangul_trials": 396,
+      "max_skip_run": 69,
+      "generated_tokens": 400,
+      "channel_trials": {
+        "0": 79,
+        "1": 76,
+        "2": 241
+      },
+      "channel_matches": {
+        "0": 68,
+        "1": 68,
+        "2": 68
+      }
+    },
+    {
+      "length_chars": 8,
+      "message": "ABCDEFGH",
+      "payload_bits": 64,
+      "total_steps": 32,
+      "detected_cnt": 218,
+      "cycles_completed": 6.8125,
+      "z_score": 13.9033,
+      "recovery_rate": 1.0,
+      "n_hangul_trials": 394,
+      "max_skip_run": 32,
+      "generated_tokens": 400,
+      "channel_trials": {
+        "0": 94,
+        "1": 90,
+        "2": 210
+      },
+      "channel_matches": {
+        "0": 73,
+        "1": 73,
+        "2": 72
+      }
+    },
+    {
+      "length_chars": 16,
+      "message": "ABCDEFGHIJKLMNOP",
+      "payload_bits": 128,
+      "total_steps": 64,
+      "detected_cnt": 136,
+      "cycles_completed": 2.125,
+      "z_score": 5.447,
+      "recovery_rate": 1.0,
+      "n_hangul_trials": 364,
+      "max_skip_run": 98,
+      "generated_tokens": 400,
+      "channel_trials": {
+        "0": 56,
+        "1": 59,
+        "2": 249
+      },
+      "channel_matches": {
+        "0": 46,
+        "1": 45,
+        "2": 45
+      }
+    }
+  ]
+}

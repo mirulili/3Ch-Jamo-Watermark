@@ -1,28 +1,37 @@
 # Makefile for the Jamo Watermark project
 
-# Define the python interpreter
-PYTHON = python3
+PYTHON = python
+CONDA = conda
+ENV_FILE = environment.yml
 
-.PHONY: all install run clean
+.PHONY: all setup install run test_robustness corpus_analysis length_sweep clean
 
 all: install
 
-# Install dependencies from requirements.txt
-install:
-	@echo "Installing dependencies..."
-	$(PYTHON) -m pip install -r requirements.txt
+setup:
+	@echo "Creating conda environment..."
+	$(CONDA) env create --file $(ENV_FILE)
 
-# Run the main application
+install:
+	@echo "Updating conda environment..."
+	$(CONDA) env update --file $(ENV_FILE) --prune
+
 run:
 	@echo "Running the main application..."
 	$(PYTHON) -m src.main
-
 
 test_robustness:
 	@echo "Running robustness evaluation..."
 	$(PYTHON) -m src.evaluation.eval_robustness
 
-# Clean up temporary files
+corpus_analysis:
+	@echo "Running vocabulary corpus analysis..."
+	$(PYTHON) -m src.evaluation.corpus_analysis
+
+length_sweep:
+	@echo "Running message-length sweep..."
+	$(PYTHON) -m src.evaluation.length_sweep
+
 clean:
 	@echo "Cleaning up temporary files..."
 	find . -type f -name "*.pyc" -delete

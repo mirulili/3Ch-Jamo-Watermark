@@ -1,0 +1,497 @@
+{
+  "config": {
+    "model_name": "skt/kogpt2-base-v2",
+    "mode": "robustness",
+    "k_bits": 2,
+    "bias_value": 5.0,
+    "seed": 42,
+    "message": "ABC"
+  },
+  "attacks": {
+    "deletion": [
+      {
+        "rate": 0.0,
+        "accuracy": 1.0,
+        "cycles_completed": 9.6667,
+        "z_score": 2.6202,
+        "n_hangul_trials": 376,
+        "max_skip_run": 154,
+        "channel_trials": {
+          "0": 56,
+          "1": 53,
+          "2": 267
+        },
+        "channel_matches": {
+          "0": 39,
+          "1": 39,
+          "2": 38
+        },
+        "passed": false
+      },
+      {
+        "rate": 0.05,
+        "accuracy": 1.0,
+        "cycles_completed": 7.5833,
+        "z_score": 0.0607,
+        "n_hangul_trials": 362,
+        "max_skip_run": 146,
+        "channel_trials": {
+          "0": 44,
+          "1": 36,
+          "2": 282
+        },
+        "channel_matches": {
+          "0": 30,
+          "1": 31,
+          "2": 30
+        },
+        "passed": false
+      },
+      {
+        "rate": 0.1,
+        "accuracy": 1.0,
+        "cycles_completed": 5.9167,
+        "z_score": -1.8961,
+        "n_hangul_trials": 345,
+        "max_skip_run": 145,
+        "channel_trials": {
+          "0": 53,
+          "1": 61,
+          "2": 231
+        },
+        "channel_matches": {
+          "0": 24,
+          "1": 23,
+          "2": 24
+        },
+        "passed": false
+      },
+      {
+        "rate": 0.2,
+        "accuracy": 1.0,
+        "cycles_completed": 3.6667,
+        "z_score": -4.547,
+        "n_hangul_trials": 316,
+        "max_skip_run": 132,
+        "channel_trials": {
+          "0": 38,
+          "1": 64,
+          "2": 214
+        },
+        "channel_matches": {
+          "0": 15,
+          "1": 15,
+          "2": 14
+        },
+        "passed": false
+      },
+      {
+        "rate": 0.3,
+        "accuracy": 1.0,
+        "cycles_completed": 2.9167,
+        "z_score": -4.5142,
+        "n_hangul_trials": 268,
+        "max_skip_run": 131,
+        "channel_trials": {
+          "0": 41,
+          "1": 32,
+          "2": 195
+        },
+        "channel_matches": {
+          "0": 12,
+          "1": 11,
+          "2": 12
+        },
+        "passed": false
+      }
+    ],
+    "substitution": [
+      {
+        "rate": 0.0,
+        "accuracy": 1.0,
+        "cycles_completed": 9.6667,
+        "z_score": 2.6202,
+        "n_hangul_trials": 376,
+        "max_skip_run": 154,
+        "channel_trials": {
+          "0": 56,
+          "1": 53,
+          "2": 267
+        },
+        "channel_matches": {
+          "0": 39,
+          "1": 39,
+          "2": 38
+        },
+        "passed": false
+      },
+      {
+        "rate": 0.05,
+        "accuracy": 1.0,
+        "cycles_completed": 4.5833,
+        "z_score": -4.2845,
+        "n_hangul_trials": 361,
+        "max_skip_run": 148,
+        "channel_trials": {
+          "0": 54,
+          "1": 36,
+          "2": 271
+        },
+        "channel_matches": {
+          "0": 18,
+          "1": 19,
+          "2": 18
+        },
+        "passed": false
+      },
+      {
+        "rate": 0.1,
+        "accuracy": 1.0,
+        "cycles_completed": 4.5833,
+        "z_score": -4.4783,
+        "n_hangul_trials": 369,
+        "max_skip_run": 151,
+        "channel_trials": {
+          "0": 32,
+          "1": 68,
+          "2": 269
+        },
+        "channel_matches": {
+          "0": 18,
+          "1": 19,
+          "2": 18
+        },
+        "passed": false
+      },
+      {
+        "rate": 0.2,
+        "accuracy": 1.0,
+        "cycles_completed": 4.3333,
+        "z_score": -4.2335,
+        "n_hangul_trials": 344,
+        "max_skip_run": 105,
+        "channel_trials": {
+          "0": 24,
+          "1": 62,
+          "2": 258
+        },
+        "channel_matches": {
+          "0": 17,
+          "1": 18,
+          "2": 17
+        },
+        "passed": false
+      },
+      {
+        "rate": 0.3,
+        "accuracy": 1.0,
+        "cycles_completed": 2.9167,
+        "z_score": -6.1287,
+        "n_hangul_trials": 334,
+        "max_skip_run": 164,
+        "channel_trials": {
+          "0": 71,
+          "1": 38,
+          "2": 225
+        },
+        "channel_matches": {
+          "0": 12,
+          "1": 11,
+          "2": 12
+        },
+        "passed": false
+      }
+    ],
+    "crop_tail": [
+      {
+        "rate": 0.0,
+        "accuracy": 1.0,
+        "cycles_completed": 9.6667,
+        "z_score": 2.6202,
+        "n_hangul_trials": 376,
+        "max_skip_run": 154,
+        "channel_trials": {
+          "0": 56,
+          "1": 53,
+          "2": 267
+        },
+        "channel_matches": {
+          "0": 39,
+          "1": 39,
+          "2": 38
+        },
+        "passed": false
+      },
+      {
+        "rate": 0.05,
+        "accuracy": 1.0,
+        "cycles_completed": 9.3333,
+        "z_score": 2.712,
+        "n_hangul_trials": 359,
+        "max_skip_run": 154,
+        "channel_trials": {
+          "0": 54,
+          "1": 46,
+          "2": 259
+        },
+        "channel_matches": {
+          "0": 38,
+          "1": 37,
+          "2": 37
+        },
+        "passed": false
+      },
+      {
+        "rate": 0.1,
+        "accuracy": 1.0,
+        "cycles_completed": 8.75,
+        "z_score": 2.47,
+        "n_hangul_trials": 341,
+        "max_skip_run": 154,
+        "channel_trials": {
+          "0": 47,
+          "1": 37,
+          "2": 257
+        },
+        "channel_matches": {
+          "0": 35,
+          "1": 35,
+          "2": 35
+        },
+        "passed": false
+      },
+      {
+        "rate": 0.2,
+        "accuracy": 1.0,
+        "cycles_completed": 6.9167,
+        "z_score": 1.0316,
+        "n_hangul_trials": 301,
+        "max_skip_run": 154,
+        "channel_trials": {
+          "0": 38,
+          "1": 29,
+          "2": 234
+        },
+        "channel_matches": {
+          "0": 28,
+          "1": 28,
+          "2": 27
+        },
+        "passed": false
+      },
+      {
+        "rate": 0.3,
+        "accuracy": 1.0,
+        "cycles_completed": 4.5833,
+        "z_score": -1.3991,
+        "n_hangul_trials": 259,
+        "max_skip_run": 145,
+        "channel_trials": {
+          "0": 24,
+          "1": 19,
+          "2": 216
+        },
+        "channel_matches": {
+          "0": 18,
+          "1": 19,
+          "2": 18
+        },
+        "passed": false
+      }
+    ],
+    "crop_head": [
+      {
+        "rate": 0.0,
+        "accuracy": 1.0,
+        "cycles_completed": 9.6667,
+        "z_score": 2.6202,
+        "n_hangul_trials": 376,
+        "max_skip_run": 154,
+        "channel_trials": {
+          "0": 56,
+          "1": 53,
+          "2": 267
+        },
+        "channel_matches": {
+          "0": 39,
+          "1": 39,
+          "2": 38
+        },
+        "passed": false
+      },
+      {
+        "rate": 0.05,
+        "accuracy": 1.0,
+        "cycles_completed": 6.6667,
+        "z_score": -1.1016,
+        "n_hangul_trials": 356,
+        "max_skip_run": 154,
+        "channel_trials": {
+          "0": 48,
+          "1": 52,
+          "2": 256
+        },
+        "channel_matches": {
+          "0": 27,
+          "1": 27,
+          "2": 26
+        },
+        "passed": false
+      },
+      {
+        "rate": 0.1,
+        "accuracy": 1.0,
+        "cycles_completed": 6.6667,
+        "z_score": -0.5958,
+        "n_hangul_trials": 339,
+        "max_skip_run": 154,
+        "channel_trials": {
+          "0": 46,
+          "1": 44,
+          "2": 249
+        },
+        "channel_matches": {
+          "0": 27,
+          "1": 27,
+          "2": 26
+        },
+        "passed": false
+      },
+      {
+        "rate": 0.2,
+        "accuracy": 1.0,
+        "cycles_completed": 6.6667,
+        "z_score": 0.6323,
+        "n_hangul_trials": 301,
+        "max_skip_run": 154,
+        "channel_trials": {
+          "0": 44,
+          "1": 45,
+          "2": 212
+        },
+        "channel_matches": {
+          "0": 27,
+          "1": 27,
+          "2": 26
+        },
+        "passed": false
+      },
+      {
+        "rate": 0.3,
+        "accuracy": 1.0,
+        "cycles_completed": 6.6667,
+        "z_score": 1.8727,
+        "n_hangul_trials": 267,
+        "max_skip_run": 101,
+        "channel_trials": {
+          "0": 63,
+          "1": 44,
+          "2": 160
+        },
+        "channel_matches": {
+          "0": 27,
+          "1": 27,
+          "2": 26
+        },
+        "passed": false
+      }
+    ],
+    "crop_middle": [
+      {
+        "rate": 0.0,
+        "accuracy": 1.0,
+        "cycles_completed": 9.6667,
+        "z_score": 2.6202,
+        "n_hangul_trials": 376,
+        "max_skip_run": 154,
+        "channel_trials": {
+          "0": 56,
+          "1": 53,
+          "2": 267
+        },
+        "channel_matches": {
+          "0": 39,
+          "1": 39,
+          "2": 38
+        },
+        "passed": false
+      },
+      {
+        "rate": 0.05,
+        "accuracy": 1.0,
+        "cycles_completed": 9.6667,
+        "z_score": 3.1298,
+        "n_hangul_trials": 361,
+        "max_skip_run": 139,
+        "channel_trials": {
+          "0": 56,
+          "1": 53,
+          "2": 252
+        },
+        "channel_matches": {
+          "0": 39,
+          "1": 39,
+          "2": 38
+        },
+        "passed": true
+      },
+      {
+        "rate": 0.1,
+        "accuracy": 1.0,
+        "cycles_completed": 9.6667,
+        "z_score": 3.8088,
+        "n_hangul_trials": 342,
+        "max_skip_run": 120,
+        "channel_trials": {
+          "0": 56,
+          "1": 53,
+          "2": 233
+        },
+        "channel_matches": {
+          "0": 39,
+          "1": 39,
+          "2": 38
+        },
+        "passed": true
+      },
+      {
+        "rate": 0.2,
+        "accuracy": 1.0,
+        "cycles_completed": 9.6667,
+        "z_score": 5.34,
+        "n_hangul_trials": 303,
+        "max_skip_run": 81,
+        "channel_trials": {
+          "0": 56,
+          "1": 53,
+          "2": 194
+        },
+        "channel_matches": {
+          "0": 39,
+          "1": 39,
+          "2": 38
+        },
+        "passed": true
+      },
+      {
+        "rate": 0.3,
+        "accuracy": 1.0,
+        "cycles_completed": 9.6667,
+        "z_score": 7.2051,
+        "n_hangul_trials": 262,
+        "max_skip_run": 43,
+        "channel_trials": {
+          "0": 56,
+          "1": 53,
+          "2": 153
+        },
+        "channel_matches": {
+          "0": 39,
+          "1": 39,
+          "2": 38
+        },
+        "passed": true
+      }
+    ]
+  }
+}

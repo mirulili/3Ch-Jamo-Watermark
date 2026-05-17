@@ -1,0 +1,11 @@
+name: jamo
+channels:
+  - defaults
+dependencies:
+  - python>=3.11,<3.12
+  - pytorch>=2.0.0
+  - transformers
+  - safetensors
+  - numpy
+  - scipy
+  - matplotlib
